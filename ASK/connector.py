@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import html2text
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -168,8 +167,8 @@ for link in link_list:
 endpoint = str(input("[+] Enter splunk analytic you want to query: "))
 response = x.action_get_details(endpoint)
 
-x.populate(link_list, response)
-#query = x.get_query(response)
+#x.populate(link_list, response)
+query = x.get_query(response)
 #techniques = x.get_mitre_techniques(response)
 #actors = x.get_threat_actors(response)
-#print(query)
+print(query)
