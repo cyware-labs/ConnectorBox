@@ -31,7 +31,7 @@ class GithubConnector(object):
         :return: boolean (True/False)
         """
         try:
-            url = "{0}".format(self.base_url) #https://cvedetails.com
+            url = "{0}".format(self.base_url)
             response = requests.request("GET", url)
             if response.status_code < 500:
                 return True
@@ -47,11 +47,10 @@ class GithubConnector(object):
             base_url=str(base_url)
             if method == "GET":
                 response = requests.get(base_url)
-                #print(response.text)
                 if response.status_code == 200:
                     return response.text
                 else:
-                    return false
+                    return False
             else:
                 return {self.result: 'Invalid Method {}\
                          Requested!'.format(method),
@@ -81,38 +80,35 @@ class GithubConnector(object):
         response = self.request_handler('GET', endpoint)
         return response
 
-
-    def check_if_valid(self, data, **kwargs):
-        '''
-        This function is to check if the entered CVE ID is check_if_valid
-        '''
-        if """We couldn’t find any repositories matching """ in data:
-            return False
-        else:
-            return True
-
     def get_required_data(self, data, **kwargs):
         '''
         This function is to query information from the raw html data
         '''
-        soup = BeautifulSoup(data, 'html.parser')
-        list = soup.findall('li', {'class':'repo-list-item hx_hit-repo d-flex flex-justify-start py-4 public source'})
-        return list.text.strip()
+        i = []
+        if data:
+
+            soup = BeautifulSoup(data, 'html.parser')
+            data = soup.find_all('a', {'class':'v-align-middle'})
+
+            for item in data:
+                i.append(item.text)
+            return i
+
 
     def format_search(self, search, **kwargs):
         '''
         This function is used to format a normal search string into a github search
         '''
+
         search=search.replace(" ","+")
         return search
 
 x=GithubConnector()
-search=str(input("Enter search string: "))
+search = str(input("Enter search string: "))
 search=x.format_search(search=search)
 x1=x.search_repo_according_to_stars(search=search)
-status=x.check_if_valid(x1)
-if(status==True):
-    a=x.get_required_data(x1)
+if x1:
+    a=x.get_required_data(str(x1))
     print(a)
 else:
-    print("We couldn’t find any repositories matching ")
+    print("We couldn't find any repositories matching ")

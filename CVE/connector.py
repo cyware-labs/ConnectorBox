@@ -44,15 +44,14 @@ class CVEConnector(object):
     def request_handler(self, method, endpoint,
                         **kwargs):
         try:
-            base_url = "{0}/{1}".format(self.base_url, endpoint) #Eg. Base url= https://www.cvedetails.com/ #endpoint= cve/{}.format('CVE-ID')
+            base_url = "{0}/{1}".format(self.base_url, endpoint)
             base_url=str(base_url)
             if method == "GET":
                 response = requests.get(base_url)
-                #print(response.text)
                 if response.status_code == 200:
                     return response.text
                 else:
-                    return false
+                    return False
             else:
                 return {self.result: 'Invalid Method {}\
                          Requested!'.format(method),
@@ -96,7 +95,8 @@ class CVEConnector(object):
 
 
 x=CVEConnector()
-x1=x.action_get_details(cve_id='CVE-2019-1010308')
+id = str(input("Enter CVE ID: "))
+x1=x.action_get_details(cve_id=id)
 status=x.check_if_valid(x1)
 if(status==True):
     a=x.get_required_data(x1)
