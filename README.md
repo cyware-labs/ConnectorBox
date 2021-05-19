@@ -64,6 +64,10 @@ This script offers a command line version to access CVE's data.
 
 Github is where the world codes. Github is also the place where often millions of keys are exposed by a company. This connector is aimed at giving a command line interface to search top repositories on Github via a keyword.
 
+### Verify Email [API Key Needed]
+
+Verify Email Service allows a user to verify any email like is the email correct, and is from valid domain and as well as it also checks out if the mailbox box really exists from which the Email came. This connector is aimed at giving a command line interface to check out the emails legitimacy.
+
 ## Usage
 
 To use a connector, navigate to its particular repository. After navigating, if required fill the needed API keys in config.py. After filling the API keys, run connector.py to work with the connector!
