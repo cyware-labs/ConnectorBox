@@ -47,7 +47,7 @@ Recon.dev uses custom built tools so each new scan is enriched to provide a deep
 
 Dubbed as the 'easy to use platform for hackers to easily discover a target's assets across the entire public internet' Recon.dev, proves to be an effective platform for defenders to get a wholesome perspective.
 
-### ### MITRE ATT&CK [No API needed]
+### MITRE ATT&CK [No API needed]
 MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. The ATT&CK knowledge base is used as a foundation for the development of specific threat models and methodologies in the private sector, in government, and the cybersecurity product and service community.
 
 Here, we offer the script to connect to MITRE's data via their TAXII server
