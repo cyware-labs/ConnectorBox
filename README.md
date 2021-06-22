@@ -10,6 +10,7 @@
 - MITRE ATT&CK
 - CVE
 - Github
+- Verify Email
 - [Usage](#Usage)
 - [Contributing](#Contributing)
 ------------
